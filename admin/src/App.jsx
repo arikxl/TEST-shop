@@ -17,7 +17,7 @@ import CreateProductPage from './pages/CreateProductPage'
 const cookies = new Cookies();
 
 export const URL = 'test-server-re61.onrender.com';
-export const localhost = 'http://localhost:5000';
+// export const localhost = 'http://localhost:5000';
 
 // const products = [
 //   {
@@ -48,7 +48,8 @@ function App() {
   
   useEffect(() => {
     
-    axios.get(URL +'/products')
+    // axios.get(localhost +'/products')
+    axios.get('/api/products')
     .then(res => setProductsFromDB(res.data))
     .catch(err => console.error(err))
     

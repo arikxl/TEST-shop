@@ -9,7 +9,7 @@ const router = express.Router()
 
 // http://localhost/phpmyadmin/
 const db = mysql.createPool({
-    host: process.env.DB_HOST || 'test-server-re61.onrender.com',
+    host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'fullstack-shop',
@@ -26,10 +26,10 @@ router.get('/', async (req, res) => {
 
         const [products] = await db.query("SELECT * FROM products")
         res.json(products)
-        console.log(products)
+        // console.log(products)
     } catch (error) {
         console.log("Database ERROR: ", error)
-        res.status(500).json({ error: 'Failed to fetch products' })
+        res.status(500).json({ error: 'Failed to fetch products-SERVER' })
     }
 })
 
@@ -37,6 +37,8 @@ router.get('/', async (req, res) => {
 
 // CREATE NEW PRODUCT
 router.post('/create', async (req, res) => {
+    console.log("🛠 POST /create received:");
+    console.log(req.body);
 
     try {
 
@@ -46,7 +48,7 @@ router.post('/create', async (req, res) => {
 
         const values = [
             req.body.id, req.body.title, req.body.brand, req.body.category, req.body.type, req.body.img1,
-            req.body.img2, req.body.price, req.body.stock, req.body.description, req.body.isOnSale
+            req.body.img2 || '', req.body.price, req.body.stock, req.body.description, req.body.isOnSale
         ];
 
         const [product] = await db.execute(sql, values);

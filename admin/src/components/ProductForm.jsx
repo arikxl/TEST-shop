@@ -33,7 +33,7 @@ const ProductForm = ({ product }) => {
     const saveProduct = () => {
         setIsLoading(true);
 
-        axios.post('http://localhost:5000/products/create',
+        axios.post('/api/products/create',
             { id, title, brand, category, type, img1, img2, price, stock, description, isOnSale }
         ).then(res => {
             console.log(res)
@@ -54,7 +54,7 @@ const ProductForm = ({ product }) => {
             setIsLoading(true);
 
             try {
-                await axios.delete('http://localhost:5000/products/product/' + id);
+                await axios.delete('/api/products/product/' + id);
                 setIsLoading(false);
                 navigate('/products')
             } catch (error) {
@@ -70,7 +70,7 @@ const ProductForm = ({ product }) => {
         setIsLoading(true);
 
         try {
-            await axios.put('http://localhost:5000/products/update/' + id, {
+            await axios.put('/api/products/update/' + id, {
                 title, brand, category, type, img1, img2, price, stock, description, isOnSale
             });
 

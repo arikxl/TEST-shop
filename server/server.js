@@ -13,7 +13,7 @@ app.use(express.json());
 dotenv.config();  // Load environment variables
 
 
-app.use('/products', productsRoutes )
+app.use('/api/products', productsRoutes )
 
 const PORT = process.env.PORT || 5000;
 
