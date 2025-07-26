@@ -2,12 +2,14 @@ import express from 'express'
 
 import mysql from 'mysql2/promise'
 
+
+
 const router = express.Router()
 
 
 // http://localhost/phpmyadmin/
 const db = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'test-server-re61.onrender.com',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'fullstack-shop',

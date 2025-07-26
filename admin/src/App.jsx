@@ -16,7 +16,8 @@ import CreateProductPage from './pages/CreateProductPage'
 
 const cookies = new Cookies();
 
-export const URL = 'https://test-server-re61.onrender.com';
+export const URL = 'test-server-re61.onrender.com';
+export const localhost = 'http://localhost:5000';
 
 // const products = [
 //   {
@@ -43,14 +44,15 @@ function App() {
   // console.log(user)
 
   const [productsFromDB, setProductsFromDB] = useState([]);
-
-
+  
+  
   useEffect(() => {
-
-    axios.get(URL + '/products')
-      .then(res => setProductsFromDB(res.data))
-      .catch(err => console.error(err))
-
+    
+    axios.get(URL +'/products')
+    .then(res => setProductsFromDB(res.data))
+    .catch(err => console.error(err))
+    
+    // console.log(productsFromDB)
   }, [productsFromDB])
 
 
@@ -62,7 +64,7 @@ function App() {
         <Route path="/admin" element={<AdminPage user={user} productsFromDB={productsFromDB} />} />
 
         <Route path="/products" element={<ProductsListPage setUser={setUser} productsFromDB={productsFromDB} />} />
-
+       
         <Route path="/product/:id" element={<ProductItemPage products={productsFromDB} />} />
 
         <Route path="/create-product" element={<CreateProductPage />} />
