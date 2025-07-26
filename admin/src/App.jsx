@@ -12,8 +12,11 @@ import ProductsListPage from './pages/ProductsListPage'
 import CreateProductPage from './pages/CreateProductPage'
 
 
+
+
 const cookies = new Cookies();
 
+export const URL = 'https://test-server-re61.onrender.com';
 
 // const products = [
 //   {
@@ -44,7 +47,7 @@ function App() {
 
   useEffect(() => {
 
-    axios.get('http://localhost:5000/products')
+    axios.get(URL + '/products')
       .then(res => setProductsFromDB(res.data))
       .catch(err => console.error(err))
 
@@ -59,7 +62,7 @@ function App() {
         <Route path="/admin" element={<AdminPage user={user} productsFromDB={productsFromDB} />} />
 
         <Route path="/products" element={<ProductsListPage setUser={setUser} productsFromDB={productsFromDB} />} />
-       
+
         <Route path="/product/:id" element={<ProductItemPage products={productsFromDB} />} />
 
         <Route path="/create-product" element={<CreateProductPage />} />
