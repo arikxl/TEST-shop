@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+nav{
+  background-color: hotpink;
+  padding: 20px 0;
+}
+
+.layout{
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
